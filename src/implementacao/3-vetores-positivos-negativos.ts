@@ -1,0 +1,3 @@
+function separarPositivosNegativos() {
+    return null;
+}

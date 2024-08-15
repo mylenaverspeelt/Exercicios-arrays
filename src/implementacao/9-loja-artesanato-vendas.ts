@@ -1,0 +1,3 @@
+function gerarRelatorioVendas() {
+    return null;
+}

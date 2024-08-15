@@ -1,0 +1,3 @@
+function gerarVetorParesDobroImparesTriplo(){
+    return null ;
+}

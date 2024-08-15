@@ -1,0 +1,3 @@
+function contarNotasNaFaixa() {
+    return null;
+}

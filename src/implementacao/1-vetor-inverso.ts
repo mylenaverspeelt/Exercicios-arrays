@@ -1,0 +1,4 @@
+function apresentarVetorInverso(){
+    return null;
+
+}

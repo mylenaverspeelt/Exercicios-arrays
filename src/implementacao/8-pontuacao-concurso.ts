@@ -1,0 +1,3 @@
+function listarAprovados() {
+    return null;
+}
