@@ -6,54 +6,55 @@ interface ProdutoIndividual {
   
   function gerarRelatorioVendas(produtos: Array<ProdutoIndividual>) {
   
-    let vetorValorDosObjetos: number[] = [];
-    let vetorQuantidadeVendida: number[] = [];
-    let vetorCodigoDoProduto: number[] = [];
-    let vetorTotalDaVendaPorObjeto: number[] = [];
-    let valorTotalDasVendas: number = 0;
+    let vetorPrecos: number[] = [];
+    let vetorQuantidade: number[] = [];
+    let vetorCodigo: number[] = [];
+    let vetorTotalDeVendasPorProduto: number[] = [];
+    let totalDasVendas: number = 0;
   
-    //   Adiciona nos arrays individuais os valores de preço, quantidade e codigo
+    //Adiciona nos arrays individuais os valores de preço, quantidade e codigo
     for (let i = 0; i < produtos.length; i++) {
       let valorDaVenda: number = produtos[i].quantidade * produtos[i].preco;
-      vetorValorDosObjetos.push(produtos[i].preco);
-      vetorQuantidadeVendida.push(produtos[i].quantidade);
-      vetorCodigoDoProduto.push(produtos[i].codigo);
-      vetorTotalDaVendaPorObjeto.push(valorDaVenda);
+        vetorPrecos.push(produtos[i].preco);
+        vetorQuantidade.push(produtos[i].quantidade);
+        vetorCodigo.push(produtos[i].codigo);
+        vetorTotalDeVendasPorProduto.push(valorDaVenda);
   
-      valorTotalDasVendas += valorDaVenda;
+        totalDasVendas += valorDaVenda;
     }
   
     let maiorNumero: number = 0;
     let indexMaisVendido: number = 0;
   
     // Verifica qual o item mais vendido e salva a posição (index) dele
-    for (let i = 2; i < vetorQuantidadeVendida.length; i++) {
-      if (maiorNumero < vetorQuantidadeVendida[i]) {
-        maiorNumero = vetorQuantidadeVendida[i];
+    for (let i = 0; i < vetorQuantidade.length; i++) {
+      if (maiorNumero < vetorQuantidade[i]) {
+        maiorNumero = vetorQuantidade[i];
         indexMaisVendido = i;
       }
     }
   
-    let precoMaisVendido: number = vetorValorDosObjetos[indexMaisVendido];
-    let codigoMaisVendido: number = vetorCodigoDoProduto[indexMaisVendido];
+    let precoMaisVendido: number = vetorPrecos[indexMaisVendido];
+    let codigoMaisVendido: number = vetorCodigo[indexMaisVendido];
   
     console.log(
       `O código do objeto mais vendido é: ${codigoMaisVendido} e seu valor custa R$${precoMaisVendido}`,
     );
   
-    let comissao: number = valorTotalDasVendas * 0.05;
+    let comissao: number = totalDasVendas * 0.05;
   
     console.log(
-      `\nO valor total de vendas foi de R$${valorTotalDasVendas} e será pago R$${comissao} de comissão ao vendedor. `,
+      `\nO valor total de vendas foi de R$${totalDasVendas} e será pago R$${comissao} de comissão ao vendedor. `,
     );
   
     // Imprimir no console o relatório de produtos
     console.log("\nRelatório dos produtos:");
     for (let i = 0; i < produtos.length; i++) {
       console.log(
-        `Código: ${vetorCodigoDoProduto[i]} - Quantidade: ${vetorQuantidadeVendida[i]} - Valor Unitário: ${vetorValorDosObjetos[i]} - Valor total vendido: ${vetorTotalDaVendaPorObjeto[i]}`,
+        `Código: ${vetorCodigo[i]} - Quantidade: ${vetorQuantidade[i]} - Valor Unitário: R$${vetorPrecos[i]} - Valor total vendido: R$${vetorTotalDeVendasPorProduto[i]}`,
       );
     }
+    
   }
   gerarRelatorioVendas([
     { codigo: 1, preco: 5, quantidade: 2 },
